@@ -17,7 +17,14 @@ class LoginViewController: UIViewController {
     let password = "123"
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+         let userDefault = UserDefaults.standard
+        if let user = userDefault.string(forKey: "username1"){
+            lblUserName.text = user
+        }
+        if let pass = userDefault.string(forKey: "password1"){
+            lblPassword.text = pass
+        }
     }
 
 
@@ -25,16 +32,23 @@ class LoginViewController: UIViewController {
         
         if(lblUserName.text == username && lblPassword.text == password){
                 let userDefault = UserDefaults.standard
+            
             if(lblRememberMe.isOn){
         
-                userDefault.set(lblUserName.text, forKey: "username")
-                userDefault.set(lblPassword, forKey: "password")
+                
+                userDefault.set(lblUserName.text, forKey: "username1")
+                userDefault.set(lblPassword.text, forKey: "password1")
+                
+               
+                
             }else{
-                    userDefault.removeObject(forKey: "username")
-                    userDefault.removeObject(forKey: "password")
+                    userDefault.removeObject(forKey: "username1")
+                    userDefault.removeObject(forKey: "password1")
                 
             }
-            
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let studentVc = sb.instantiateViewController(withIdentifier: "StudentVc") as! StudentEntryViewController
+            self.present(studentVc,animated: true)
             
             
         }else{
