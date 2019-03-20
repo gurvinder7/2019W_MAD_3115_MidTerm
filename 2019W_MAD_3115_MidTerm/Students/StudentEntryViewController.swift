@@ -10,6 +10,8 @@ import UIKit
 
 class StudentEntryViewController: UIViewController {
 
+    var studentobj = Student()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
