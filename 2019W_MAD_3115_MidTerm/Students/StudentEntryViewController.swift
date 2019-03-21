@@ -10,6 +10,7 @@ import UIKit
 
 class StudentEntryViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSource {
 
+  
     var studentobj = Student()
     var courses = ["MADT", "MODT", "CSD", "WADT"]
     
@@ -82,9 +83,11 @@ class StudentEntryViewController: UIViewController ,UIPickerViewDelegate, UIPick
         studentobj.sMarks.append(Int(lblMarks3.text!)!)
         studentobj.sMarks.append(Int(lblMarks4.text!)!)
         studentobj.sMarks.append(Int(lblMarks5.text!)!)
-            let totalmarks :Int = (Int(lblMarks1.text!)! + Int(lblMarks2.text!)! + Int(lblMarks3.text!)! + Int(lblMarks4.text!)! + Int(lblMarks5.text!)!)
+            let  totalmarks : Int = (Int(lblMarks1.text!)! + Int(lblMarks2.text!)! + Int(lblMarks3.text!)! + Int(lblMarks4.text!)! + Int(lblMarks5.text!)!)
             studentobj.stotalmarks = totalmarks
             
+            let per : Float = Float(totalmarks/500)
+            studentobj.spercent = Float(per)
             
             
             
@@ -99,7 +102,7 @@ class StudentEntryViewController: UIViewController ,UIPickerViewDelegate, UIPick
             self.present(alertController,animated: true)
         }
     }
-    
+   
     /*
     // MARK: - Navigation
 
